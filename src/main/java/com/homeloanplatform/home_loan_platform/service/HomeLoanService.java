@@ -1,8 +1,9 @@
 package com.homeloanplatform.home_loan_platform.service;
 
 import com.homeloanplatform.home_loan_platform.dto.LoanInquiryRequest;
+import com.homeloanplatform.home_loan_platform.dto.bank.GrowOneEligibilityResponse;
 
 
 public interface HomeLoanService {
-    public  LoanInquiryRequest processInquiry(LoanInquiryRequest request);
+    public GrowOneEligibilityResponse processInquiry(LoanInquiryRequest request);
 }

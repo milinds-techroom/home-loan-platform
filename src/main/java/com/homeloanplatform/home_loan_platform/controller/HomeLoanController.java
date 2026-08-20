@@ -1,8 +1,8 @@
 package com.homeloanplatform.home_loan_platform.controller;
 
 import com.homeloanplatform.home_loan_platform.dto.LoanInquiryRequest;
+import com.homeloanplatform.home_loan_platform.dto.bank.GrowOneEligibilityResponse;
 import com.homeloanplatform.home_loan_platform.service.HomeLoanService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +21,10 @@ public class HomeLoanController {
 
     @PostMapping("/inquiry")
     public ResponseEntity<?> processInquiry(@RequestBody LoanInquiryRequest loanInquiryRequest){
-        System.out.println(loanInquiryRequest.getPropertyValue());
-        LoanInquiryRequest response = this.service.processInquiry(loanInquiryRequest);
+        System.out.println("call in home loan service");
+        long id=(long) (Math.random() * 1000) + 1;
+        loanInquiryRequest.setInquiryId(Long.toString(id));
+        GrowOneEligibilityResponse response = this.service.processInquiry(loanInquiryRequest);
         return ResponseEntity.ok(response);
     }
 }
