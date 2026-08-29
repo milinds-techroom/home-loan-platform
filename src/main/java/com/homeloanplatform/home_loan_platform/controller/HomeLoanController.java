@@ -3,6 +3,7 @@ package com.homeloanplatform.home_loan_platform.controller;
 import com.homeloanplatform.home_loan_platform.dto.LoanInquiryRequest;
 import com.homeloanplatform.home_loan_platform.dto.bank.GrowOneEligibilityResponse;
 import com.homeloanplatform.home_loan_platform.service.HomeLoanService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class HomeLoanController {
     }
 
     @PostMapping("/inquiry")
-    public ResponseEntity<?> processInquiry(@RequestBody LoanInquiryRequest loanInquiryRequest){
+    public ResponseEntity<?> processInquiry(@Valid @RequestBody LoanInquiryRequest loanInquiryRequest){
         System.out.println("call in home loan service");
         long id=(long) (Math.random() * 1000) + 1;
         loanInquiryRequest.setInquiryId(Long.toString(id));
